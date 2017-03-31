@@ -1,0 +1,38 @@
+﻿@model Project.User
+
+@{
+    ViewBag.Title = "LogIn";
+}
+if(@ViewBag.Message != null)
+{
+    <div style="border: solid 1px red">
+        @ViewBag.Message
+    </div>
+}
+<h2>LogIn</h2>
+
+@using (Html.BeginForm("LogIn","LogIn",FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true);
+    <div>
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username)
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password)
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <div>
+        <input type="submit" value="LogIn"/>
+    </div>
+
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jquery");
+}
+
